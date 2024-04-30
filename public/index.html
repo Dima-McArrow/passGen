@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PassGen</title>
+  <link rel="stylesheet" media="screen and (min-width: 1024px)" href="styles.css">
+  <link rel="stylesheet" media="screen and (max-width: 768px)" href="styles_mob.css">
+  <script src="passShow.js" defer></script>
+</head>
+<body>
+  <h1>Welcome to passGen V 0.5</h1>
+  <form id="passLengthForm">
+    <label for="passLength">Enter the desired password Length (1 to 50 characters):</label>
+    <input type="number" id="passLength" name="passLength" min="1" max="50">
+    <button type="submit" id="submitLength">Generate</button>
+  </form>
+  <div id="passWrap"></div>
+  <button id="reload" class="lastButton">Reset</button>
+</body>
+</html>
