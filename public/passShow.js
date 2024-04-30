@@ -1,3 +1,9 @@
+const config = {
+  API_BASE_URL:
+    window.location.hostname === "localhost" ? "http://localhost:3000" : "",
+};
+
+
 window.onload = function() {
   /* const passShow = document.getElementById('passWrap');
   fetch('http://localhost:3000/api/passGen')
@@ -17,7 +23,7 @@ window.onload = function() {
     const lengthInput = document.getElementById('passLength').value;
     console.log(lengthInput);
     const passShow = document.getElementById('passWrap');
-    fetch(`http://localhost:3000/api/passGen?lengthInput=${lengthInput}`)
+    fetch(`${config.API_BASE_URL}/api/passGen?lengthInput=${lengthInput}`)
       .then(response => response.json())
       .then(data => {
         const passPara = document.createElement('p');
