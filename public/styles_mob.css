@@ -117,3 +117,12 @@ input {
   font-family: "Special Elite", system-ui;
   font-weight: 900;
 }
+
+footer p {
+  margin: 0.5em auto;
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+  margin-top: 2em;
+  font-family: "Jersey 15", sans-serif;
+}
