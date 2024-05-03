@@ -38,6 +38,10 @@ exports.getPassByLength = async (req, res) => {
       return res.status(400).json({ message: "Invalid length provided." });
     }
     let pass = pass_gen(lengthInput);
+    const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@]).+$/
+    while (!regex.test(pass)) {
+      pass = pass_gen(lengthInput);
+    }
     res.json({ pass: pass });
   } catch (err) {
     console.error("Error generating password:", err);
