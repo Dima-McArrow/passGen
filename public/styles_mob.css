@@ -23,6 +23,8 @@ p {
   font-size: 1.5em;
   color: #188678;
   text-align: center;
+  font-family: "Jersey 15", sans-serif;
+  padding: 0 1em;
 }
 
 button {
@@ -49,6 +51,15 @@ button:hover {
   width: 74%;
   margin: 2rem auto 4rem auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: "Special Elite", system-ui;
+}
+
+#passWrap > .passWord {
+  font-size: 1.5em;
+  color: #333;
+  margin: 0.5em auto;
+  font-family: "Special Elite", system-ui;
+  font-weight: 900;
 }
 
 .lastButton {
@@ -88,4 +99,21 @@ input {
 
 .passWord {
   font-size: 1em;
+}
+
+.regEx {
+  font-size: 1em;
+  color: #333;
+  margin: 0.5em auto;
+  text-align: left;
+  list-style: square;
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  font-family: "Jersey 15", sans-serif;
+}
+
+.regEx li > span {
+  font-family: "Special Elite", system-ui;
+  font-weight: 900;
 }
