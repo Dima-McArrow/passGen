@@ -1,20 +1,34 @@
 // app.js
 
-const path = require('path')
-const express = require('express')
-const { body, validationResult } = require("express-validator")
-const helmet = require("helmet")
-const app = express()
-const port = process.env.PORT || 3000
+const path = require("path");
+const express = require("express");
+const { body, validationResult } = require("express-validator");
+const helmet = require("helmet");
+const app = express();
+const port = process.env.PORT || 3000;
 const cors = require("cors");
 
+const passGenRouter = require("./routes/passGenRouter.js");
 
-const passGenRouter = require('./routes/passGenRouter.js')
-
-app.use(helmet())
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(express.static(path.join(__dirname, '..', 'public')))
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "default-src": ["'self'"],
+        "script-src": ["'self'", "'unsafe-inline'"],
+        "img-src": [
+          "'self'",
+          "data:",
+          "https://sandrine-coupart-site.s3.eu-west-3.amazonaws.com",
+        ],
+      },
+    },
+  })
+);
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 const allowedOrigins = [
   "http://localhost:5500",
@@ -46,14 +60,12 @@ app.use(
 // Handle GET request for the root URL
 app.get("/", (req, res) => {
   // Redirect to ../public/index.html
-  res.redirect("/index.html")
-})
+  res.redirect("/index.html");
+});
 
-
-app.use("/api", passGenRouter)
+app.use("/api", passGenRouter);
 
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
-})
-
+});
