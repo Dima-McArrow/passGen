@@ -20,7 +20,7 @@ const pass_gen = (length) => {
 };
 
 // Exporting the controller function
-exports.getPass = async (req, res) => {
+/* exports.getPass = async (req, res) => {
   try {
     let pass = pass_gen(13);
     res.json({ pass: pass });
@@ -28,13 +28,13 @@ exports.getPass = async (req, res) => {
     console.error("Error generating password:", err);
     res.status(500).json({ message: err.message });
   }
-};
+}; */
 
 exports.getPassByLength = async (req, res) => {
   try {
     const lengthInput = parseInt(req.query.lengthInput, 10); // Ensure parsing as integer
     console.log("Length input: ", lengthInput);
-    if (isNaN(lengthInput) || lengthInput <= 0) {
+    if (isNaN(lengthInput) || lengthInput < 4) {
       return res.status(400).json({ message: "Invalid length provided." });
     }
     let pass = pass_gen(lengthInput);
